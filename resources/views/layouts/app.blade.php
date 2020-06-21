@@ -13,13 +13,8 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('assets/js/app.js') }}" defer></script>
 
-    <!-- Fonts -->
-    {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
-    {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -73,10 +68,39 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="container-fluid">
+            <div class="row">
+                <nav id="sidebar" class="sidebar col-md-3 col-lg-2 mt-3 d-md-block bg-light collapse">
+                    <div class="sidebar-sticky pt-3">
+                    <ul class="nav flex-column">
+                        {{-- <div class="profile-userpic">
+                            <img src="{{ asset('img/1.jpeg') }}" class="img-fluid" alt="">
+                        </div> --}}
+                        <li class="nav-item">
+                            <img src="{{ asset('img/1.png') }}" class="avatar" alt="avatar">
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link border-bottom align-content-center" href="{{url('/students')}}">
+                            {{ Auth::user()->name }} 
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link border-bottom" href="{{url('/students/profil')}}">
+                            Profil
+                        </a>
+                        </li>
+                    </ul>
+                    </div>
+                </nav>
+          
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4"><div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+        
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-3 border-bottom">
+                        @yield('content')
+                    </div>
+                </main>      
+            </div>
+          </div>
     </div>
 </body>
 </html>
