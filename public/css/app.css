@@ -4568,9 +4568,10 @@ input[type="button"].btn-block {
 }
 
 .navbar {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
+    position: fixed;
+    overflow: hidden;
+    /* display: -ms-flexbox; */
+    display: block;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     -ms-flex-align: center;
@@ -5105,6 +5106,10 @@ input[type="button"].btn-block {
 .card-subtitle {
     margin-top: -0.375rem;
     margin-bottom: 0;
+}
+
+.card-date {
+    font-size: 10px;
 }
 
 .card-text:last-child {
@@ -17982,6 +17987,10 @@ button.bg-dark:hover {
 .ml-5,
 .mx-5 {
     margin-left: 3rem!important
+}
+
+.mt-6 {
+    margin-top: 4rem!important
 }
 
 .p-0 {

@@ -52,12 +52,29 @@
                                 @enderror
                             </div>
                         </div>
-
+                        
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
+                            
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
+
+                            <div class="col-md-6">
+                                {{-- <input id="gender" type="radio" class="form-control @error('gender') is-invalid @enderror" name="gender" value="Laki - Laki" placeholder="Laki - Laki" required autocomplete="gender">  --}}
+                                <select class="form-control @error('gender') is-invalid @enderror" name="gender" id="gender">
+                                <option value="laki">Laki - laki</option>
+                                <option value="perempuan">Perempuan</option>
+                                </select>
+                                @error('gender')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
