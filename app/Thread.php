@@ -10,7 +10,7 @@ class Thread extends Model
         'id_users', 'threads',
     ];
 
-    public function threads(){
+    public function user(){
         return $this->belongsTo('App\User');
     }
 }

@@ -21,5 +21,5 @@ Auth::routes();
 
 //Thread
 Route::post('/home','ThreadsController@store');
-Route::get('/home','ThreadsController@index')->name('home');
+Route::get('/home','UsersController@index')->name('home');
 // Route::resource('/home','ThreadsController')->name('home');

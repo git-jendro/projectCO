@@ -22,17 +22,25 @@
 @endsection
 
 @section('thread')
-<div class="card mt-3">
-    <div class="card-header">Nama 
+@foreach ($users as $user)
+<div class="card mt-4">
+    
+    <div class="card-header">
+        {{$user->name}}   
+        Nama
+        {{-- @foreach ($user->thread as $t) --}}
         <div class="card-date">
             Tanggal
+            {{-- {{$t->created_at}} --}}
         </div>
     </div>
-  
-      <div class="card-body">
-          Threads
-      </div>
-  </div>
+    <div class="card-body">
+        Thread
+        {{-- {{$t->threads}}  --}}
+    </div>
+    {{-- @endforeach --}}
+</div>
+@endforeach
     
 @endsection
 

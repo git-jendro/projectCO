@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Thread;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class ThreadsController extends Controller
+class UsersController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -18,7 +16,7 @@ class ThreadsController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +25,7 @@ class ThreadsController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('home',compact('threads'));
+        return view('home',compact('users'));
     }
 
     /**
@@ -48,21 +46,16 @@ class ThreadsController extends Controller
      */
     public function store(Request $request)
     {
-        Thread::create([
-            'id_users' => Auth::user()->id,
-            'threads' => $request->threads
-        ]);
-
-        return view('home');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Thread  $thread
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Thread $thread)
+    public function show($id)
     {
         //
     }
@@ -70,10 +63,10 @@ class ThreadsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Thread  $thread
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Thread $thread)
+    public function edit($id)
     {
         //
     }
@@ -82,10 +75,10 @@ class ThreadsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Thread  $thread
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Thread $thread)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -93,10 +86,10 @@ class ThreadsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Thread  $thread
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thread $thread)
+    public function destroy($id)
     {
         //
     }
