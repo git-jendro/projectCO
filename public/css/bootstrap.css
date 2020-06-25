@@ -5091,6 +5091,10 @@ input[type="button"].btn-block {
     padding: 1.25rem;
 }
 
+.card-date {
+    font-size: 10px;
+}
+
 .card-title {
     margin-bottom: 0.75rem;
 }

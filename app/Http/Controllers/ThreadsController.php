@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class ThreadsController extends Controller
 {
     /**
@@ -26,8 +27,10 @@ class ThreadsController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('home',compact('threads'));
+        $threads = Thread::orderBy('created_at','desc')
+                ->get();
+
+        return view('/home',compact('threads'));
     }
 
     /**
@@ -52,8 +55,7 @@ class ThreadsController extends Controller
             'id_users' => Auth::user()->id,
             'threads' => $request->threads
         ]);
-
-        return view('home');
+        return redirect()->action('ThreadsController@index');
     }
 
     /**

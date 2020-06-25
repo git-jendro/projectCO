@@ -20,6 +20,6 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 
 //Thread
+Route::get('/home','ThreadsController@index');
 Route::post('/home','ThreadsController@store');
-Route::get('/home','UsersController@index')->name('home');
 // Route::resource('/home','ThreadsController')->name('home');

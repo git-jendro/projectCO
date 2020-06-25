@@ -74,7 +74,7 @@
                     <div class="nav flex-column flex-nowrap vh-100 overflow-auto text-white p-4 align-content-center">
                         <img src="{{ asset('img/1.png') }}" class="avatar" alt="avatar">
                         <a href="./" class="nav-link">{{ Auth::user()->name }}</a>
-                        <a href="./" class="nav-link">Total Update</a>
+                        <a href="./" class="nav-link"></a>
                     </div>
                 </div>
                 <div class="col offset-2" id="main">

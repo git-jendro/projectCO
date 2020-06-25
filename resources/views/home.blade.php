@@ -12,8 +12,8 @@
                             <span class="input-group-text">Perasaan anda ?</span>
                         </div>
                             <textarea class="form-control" aria-label="With textarea" name="threads" placeholder="Tulisakan keluh kesah anda disini..."></textarea>
-                            <button type="submit" class="btn btn-primary ml-2">Kirim</button>
-                        </div>
+                                <button type="submit" class="btn btn-primary ml-2">Kirim</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -22,25 +22,19 @@
 @endsection
 
 @section('thread')
-@foreach ($users as $user)
-<div class="card mt-4">
+@foreach ($threads as $thread)
+<div class="card mt-4  ">
     
     <div class="card-header">
-        {{$user->name}}   
-        Nama
-        {{-- @foreach ($user->thread as $t) --}}
+        {{$thread->user['name']}}   
         <div class="card-date">
-            Tanggal
-            {{-- {{$t->created_at}} --}}
+            {{$thread->created_at}}
         </div>
     </div>
     <div class="card-body">
-        Thread
-        {{-- {{$t->threads}}  --}}
+        {{$thread->threads}}
     </div>
-    {{-- @endforeach --}}
 </div>
 @endforeach
-    
 @endsection
 
