@@ -28,9 +28,13 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $threads = Thread::orderBy('created_at','desc')
-                ->where('id_users', '<>',$user->id)->get();
+                ->get();
+        $hitung = Thread::where('id_users', '=',$user->id);
+        // $threads = Thread::all();
+        // $thread = Thread::orderBy('created_at','desc')
+        //         ->get();
        
 
-        return view('/home',compact('threads'));
+        return view('/home',compact('threads','hitung'));
     }
 }

@@ -75,7 +75,9 @@
                         <img src="{{ asset('img/1.png') }}" class="avatar" alt="avatar">
                         <a href="#" class="nav-link">{{ Auth::user()->name }}</a>
                         <a href="#" class="nav-link">
-                             {{$threads->count()}}
+                            Jumlah Update
+                            <br>
+                             {{$hitung->count()}}
                              
                         </a>
                     </div>
