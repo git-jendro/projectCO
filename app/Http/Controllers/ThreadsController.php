@@ -55,7 +55,7 @@ class ThreadsController extends Controller
             'id_users' => Auth::user()->id,
             'threads' => $request->threads
         ]);
-        return redirect()->action('ThreadsController@index');
+        return redirect()->action('HomeController@index');
     }
 
     /**

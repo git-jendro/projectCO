@@ -22,13 +22,14 @@
 @endsection
 
 @section('thread')
+{{-- {{dd($users)}} --}}
 @foreach ($threads as $thread)
 <div class="card mt-4  ">
     
     <div class="card-header">
-        {{$thread->user['name']}}   
+        {{$thread->user->name}}   
         <div class="card-date">
-            {{$thread->created_at}}
+            {{date('F d, Y', strtotime($thread->created_at))}} at {{date('g : ia', strtotime($thread->created_at))}}
         </div>
     </div>
     <div class="card-body">

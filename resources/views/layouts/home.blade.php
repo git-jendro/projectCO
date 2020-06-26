@@ -73,8 +73,11 @@
                 <div class="col-2 px-1 bg-white shadow-sm position-fixed pt-2" id="sticky-sidebar">
                     <div class="nav flex-column flex-nowrap vh-100 overflow-auto text-white p-4 align-content-center">
                         <img src="{{ asset('img/1.png') }}" class="avatar" alt="avatar">
-                        <a href="./" class="nav-link">{{ Auth::user()->name }}</a>
-                        <a href="./" class="nav-link"></a>
+                        <a href="#" class="nav-link">{{ Auth::user()->name }}</a>
+                        <a href="#" class="nav-link">
+                             {{$threads->count()}}
+                             
+                        </a>
                     </div>
                 </div>
                 <div class="col offset-2" id="main">
