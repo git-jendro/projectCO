@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Thread;
 use App\User;
 use Illuminate\Http\Request;
@@ -28,13 +29,15 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $threads = Thread::orderBy('created_at','desc')
-                ->get();
+        ->get();
         $hitung = Thread::where('id_users', '=',$user->id);
+        $comment = Comment::orderBy('created_at','desc')
+        ->get();
         // $threads = Thread::all();
         // $thread = Thread::orderBy('created_at','desc')
         //         ->get();
        
 
-        return view('/home',compact('threads','hitung'));
+        return view('/home',compact('threads','hitung','comment'));
     }
 }

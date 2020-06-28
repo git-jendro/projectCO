@@ -70,9 +70,13 @@
         </nav>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-2 px-1 bg-white shadow-sm position-fixed pt-2" id="sticky-sidebar">
-                    <div class="nav flex-column flex-nowrap vh-100 overflow-auto text-white p-4 align-content-center">
-                        <img src="{{ asset('img/1.png') }}" class="avatar" alt="avatar">
+                <div class="col-2 bg-white shadow-sm position-fixed pt-4">
+                    <div class="nav flex-column flex-nowrap vh-100 overflow-auto text-white align-content-center">
+                        @if (Auth::user()->gender=='laki')
+                            <img src="{{ asset('img/1.png') }}" class="avatar mb-3" alt="avatar">
+                        @else
+                            <img src="{{ asset('img/2.png') }}" class="avatar mb-3" alt="avatar">
+                        @endif
                         <a href="#" class="nav-link">{{ Auth::user()->name }}</a>
                         <a href="#" class="nav-link">
                             Jumlah Update
@@ -82,10 +86,17 @@
                         </a>
                     </div>
                 </div>
+                
                 <div class="col offset-2" id="main">
+                    @if (Auth::user()->status!="admin")
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-3 border-bottom">
                         @yield('content')
                     </div>
+                    @else
+                        <div class="card-header">
+                            Yu've log in as Admin {{Auth::user()->name}}
+                        </div>                      
+                    @endif
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -97,5 +108,15 @@
             </div>
         </div>
     </div>
+    <footer class="page-footer font-small blue">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2020 Copyright:
+          <a href="https://github.com/git-jendro"> git-jendro</a>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
 </body>
 </html>

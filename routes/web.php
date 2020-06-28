@@ -21,3 +21,6 @@ Auth::routes();
 //Thread
 Route::get('/home','HomeController@index');
 Route::post('/home','ThreadsController@store');
+
+//Comment
+Route::post('/comment','CommentsController@store');

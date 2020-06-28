@@ -16,4 +16,9 @@ class Thread extends Model
     protected $fillable = [
         'id_users', 'threads',
     ];
+
+    public function comment(){
+        return $this->hasMany('App\Comment','id_threads');
+    }
+        
 }

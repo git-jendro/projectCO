@@ -179,12 +179,12 @@ a:hover {
 }
 
 a:not([href]) {
-    color: inherit;
+    color: var(--gray-dark);
     text-decoration: none;
 }
 
 a:not([href]):hover {
-    color: inherit;
+    color: var(--gray-dark);
     text-decoration: none;
 }
 
@@ -4669,21 +4669,22 @@ input[type="button"].btn-block {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
     overflow-x: hidden;
     padding-top: 20px;
+    color: green !important;
 }
 
-.sidebar a {
+
+/* .sidebar a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    color: #818181;
     display: block;
-}
+} */
 
-.sidebar a:hover {
+
+/* .sidebar a:hover {
     color: #f1f1f1;
-}
+} */
 
 .avatar {
     display: block;
@@ -4692,6 +4693,12 @@ input[type="button"].btn-block {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+}
+
+.pict {
+    display: block;
+    width: 75px;
+    height: 75px;
 }
 
 @media (max-width: 575.98px) {
@@ -5093,6 +5100,14 @@ input[type="button"].btn-block {
 
 .card-date {
     font-size: 10px;
+}
+
+.card-delete {
+    font-size: 12px;
+}
+
+.comment {
+    font-size: 12px;
 }
 
 .card-title {
