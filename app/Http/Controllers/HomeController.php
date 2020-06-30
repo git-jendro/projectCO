@@ -35,14 +35,16 @@ class HomeController extends Controller
         $hitung = $threads->where('id_users', '=',$user->id);
         
         //Comments
-        $t = Thread::all();
-        $comment = Comment::all();
-        // $c = $comment->where('id_threads','=',$t->first()->id_threads);
+        $t = Thread::select('id_threads');
+        $comment = Comment::orderBy('id_threads','asc')
+        ->get();
+        // dd($c);
+        
         
         
 
        
 
-        return view('/home',compact('threads','hitung','comment'));
+        return view('/home',compact('threads','hitung','comment','c'));
     }
 }

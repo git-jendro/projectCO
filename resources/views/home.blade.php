@@ -48,20 +48,23 @@
                 @endif
             </div>
             <hr>  
-            {{-- @if ($thread->id_threads==$thread->comment->first()->id_threads) --}}
+            @foreach ($comment as $c)
+            @if ($thread->id_threads==$c->id_threads)
+                {{$thread->id_threads}}
             <div class="media comment mt-3">
                 <a class="mr-3" href="#">
                     <img src="..." class="mr-3" alt="Dummy">
                 </a>
-                    
+                
                 <div class="media-body">
                     {{-- @if ($c->id_users==$c->users->first()->id)
                 <h6 class="mt-0">{{$c->users->first()->name}}</h6>
-                        
+                
                     @else
                         
                     @endif --}}
-                    {{$thread->comment->first()->comments}}
+                    {{$c->id_threads}}
+                    {{$c->comments}}
                     <div class="card-delete mt-5">
                         <a href="">Balas</a>
                     </div>
@@ -92,9 +95,10 @@
                     </div> --}}
                 </div>
             </div>
-            {{-- @else
+            @else
             
-            @endif --}}
+            @endif
+            @endforeach
             <div class="media mt-3">
                 <a class="mr-3" href="#">
                 <img src="..." class="mr-3" alt="Dummy">
