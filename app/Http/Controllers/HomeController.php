@@ -28,14 +28,19 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
+        
+        //Threads
         $threads = Thread::orderBy('created_at','desc')
         ->get();
-        $hitung = Thread::where('id_users', '=',$user->id);
-        $comment = Comment::orderBy('created_at','desc')
-        ->get();
-        // $threads = Thread::all();
-        // $thread = Thread::orderBy('created_at','desc')
-        //         ->get();
+        $hitung = $threads->where('id_users', '=',$user->id);
+        
+        //Comments
+        $t = Thread::all();
+        $comment = Comment::all();
+        // $c = $comment->where('id_threads','=',$t->first()->id_threads);
+        
+        
+
        
 
         return view('/home',compact('threads','hitung','comment'));

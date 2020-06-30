@@ -40,7 +40,7 @@ class User extends Authenticatable
     // protected $primaryKey = "id";
 
     public function threads(){
-        return $this->hasMany('App\Thread','id_users');
+        return $this->hasMany('App\Thread');
     }
 
     public function comments(){

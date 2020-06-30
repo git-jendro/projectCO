@@ -27,6 +27,7 @@
 <form action="/comment" method="post">
     @csrf
 <div class="media mb-3">
+    
     @if (($thread->user->gender=="laki"))
     <img src="{{ asset('img/1.png')}}" class="pict mr-3" alt="">
     @else
@@ -34,11 +35,11 @@
     @endif
     <div class="media-body">
         <h5 class="mb-0">{{$thread->user->name}}</h5>
-            <div class="card-date mb-2">
-                {{date('F d, Y', strtotime($thread->created_at))}} at {{date('g : ia', strtotime($thread->created_at))}}
+        <div class="card-date mb-2">
+            {{date('F d, Y', strtotime($thread->created_at))}} at {{date('g : ia', strtotime($thread->created_at))}}
             </div>
         <input type="hidden" name="$id_threads" value="{{$thread->id_threads}}">
-            {{$thread->threads}}
+        {{$thread->threads}}
             <div class="card-delete mt-5">
                 @if (Auth::user()->id==$thread->id_users)
                 <a href="">Delete</a>
@@ -46,25 +47,32 @@
                 
                 @endif
             </div>
-            <hr>
+            <hr>  
+            {{-- @if ($thread->id_threads==$thread->comment->first()->id_threads) --}}
             <div class="media comment mt-3">
                 <a class="mr-3" href="#">
-                <img src="..." class="mr-3" alt="Dummy">
+                    <img src="..." class="mr-3" alt="Dummy">
                 </a>
+                    
                 <div class="media-body">
-                    <h6 class="mt-0">Dummy</h6>
-                    Dummy
+                    {{-- @if ($c->id_users==$c->users->first()->id)
+                <h6 class="mt-0">{{$c->users->first()->name}}</h6>
+                        
+                    @else
+                        
+                    @endif --}}
+                    {{$thread->comment->first()->comments}}
                     <div class="card-delete mt-5">
                         <a href="">Balas</a>
                     </div>
-                    <hr>
+                    {{-- <hr>
                     <div class="media mt-3">
                         <a class="mr-3" href="#">
-                        <img src="..." class="mr-3" alt="Dummy">
+                            <img src="..." class="mr-3" alt="Dummy">
                         </a>
                         <div class="media-body">
                             <h6 class="mt-0">Dummy</h6>
-                                Dummy
+                            Dummy
                             <div class="card-delete mt-5">
                                 <a href="">Balas</a>
                             </div>
@@ -72,18 +80,21 @@
                     </div>
                     <div class="media mt-3">
                         <a class="mr-3" href="#">
-                        <img src="..." class="mr-3" alt="Dummy">
+                            <img src="..." class="mr-3" alt="Dummy">
                         </a>
                         <div class="media-body">
                             <h6 class="mt-0">Dummy</h6>
-                                Dummy
+                            Dummy
                             <div class="card-delete mt-5">
                                 <a href="">Balas</a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
+            {{-- @else
+            
+            @endif --}}
             <div class="media mt-3">
                 <a class="mr-3" href="#">
                 <img src="..." class="mr-3" alt="Dummy">
@@ -115,6 +126,7 @@
     <div class="input-group mb-5">
         <input type="hidden" name="id_threads" value="{{$thread->id_threads}}">
         <input type="hidden" name="id_users" value="{{$thread->user->id}}">
+        <input type="hidden" name="status" value="comment">
         <textarea class="form-control" name="comments" placeholder="Komentari..."></textarea>
         <button type="submit" class="btn btn-primary ml-2">Kirim</button>
       </div>

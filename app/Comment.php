@@ -13,10 +13,10 @@ class Comment extends Model
     }
 
     public function users(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User','id_users');
     }
 
     protected $fillable = [
-        'id_threads', 'id_users', 'comments',
+        'id_threads', 'id_users', 'comments','status'
     ];
 }
