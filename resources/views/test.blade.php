@@ -53,13 +53,7 @@
                 {{$thread->id_threads}}
             <div class="media comment mt-3">
                 <a class="mr-3" href="#">
-                    @if (($thread->user->gender=="laki"))
-                    {{$thread->user->gender}}
-                    <img src="{{ asset('img/1.png')}}" class="pict mr-3" alt="">
-                    @else
-                    {{$thread->user->gender}}
-                    <img src="{{ asset('img/2.png')}}" class="pict mr-3" alt="">
-                    @endif
+                    <img src="..." class="mr-3" alt="Dummy">
                 </a>
                 
                 <div class="media-body">
@@ -68,14 +62,14 @@
                     <h6 class="mt-0">{{$thread->user->name}}</h6>
                     {{$c->comments}}
                     <div class="card-delete mt-3">
-                        <a href="#" onclick="myFunction()">Balas</a>
+                        <a href="" onclick="myFunction()">Balas</a>
 
-                        <div id="child" style="display:none" class="mt-3">
+                        <div id="child">
                             <input type="hidden" name="id_threads" value="{{$c->comments}}">
                             <input type="hidden" name="id_users" value="{{$thread->user->id}}">
                             <input type="hidden" name="status" value="child">
                             <textarea class="form-control" name="comments" placeholder="Komentari..."></textarea>
-                            <button type="button" class="btn btn-primary mt-1">Kirim</button>
+                            <button type="button" class="btn btn-primary ml-2">Kirim</button>
                         </div>
                     </div>
                     <script>
@@ -151,6 +145,7 @@
 
     <div class="input-group mb-5">
         <input type="hidden" name="id_threads" value="{{$thread->id_threads}}">
+        <input type="hidden" name="id_users" value="{{$thread->user->id}}">
         <input type="hidden" name="status" value="comment">
         <textarea class="form-control" name="comments" placeholder="Komentari..."></textarea>
         <button type="submit" class="btn btn-primary ml-2">Kirim</button>

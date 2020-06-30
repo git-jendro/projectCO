@@ -39,12 +39,13 @@ class CommentsController extends Controller
     {
         // dd($request);
         
-        Comment::create($request->all());
-        // Comment::create([
-        //     'id_users' => $request->id_users,
-        //     'id_threads' => $request->id_threads,
-        //     'comments' => $request->comments
-        // ]);
+        // Comment::create($request->all());
+        Comment::create([
+            'id_users' => Auth::user()->id,
+            'id_threads' => $request->id_threads,
+            'comments' => $request->comments,
+            'status' => $request->status
+        ]);
         return redirect()->action('HomeController@index');
     }
 
