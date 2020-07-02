@@ -11,8 +11,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Perasaan anda ?</span>
                         </div>
-                            <textarea class="form-control" aria-label="With textarea" name="threads" placeholder="Tulisakan keluh kesah anda disini..."></textarea>
-                                <button type="submit" class="btn btn-primary ml-2">Kirim</button>
+                        <textarea class="form-control" aria-label="With textarea" name="threads" placeholder="Tulisakan keluh kesah anda disini..."></textarea>
+                        <button type="submit" class="btn btn-primary ml-2">Kirim</button>
                     </div>
                 </form>
             </div>
@@ -24,8 +24,6 @@
 @section('thread')
 {{-- {{dd($users)}} --}}
 @foreach ($threads as $thread)
-<form action="/comment" method="post">
-    @csrf
 <div class="media mb-3">
     
     @if (($thread->user->gender=="laki"))
@@ -37,10 +35,10 @@
         <h5 class="mb-0">{{$thread->user->name}}</h5>
         <div class="card-date mb-2">
             {{date('F d, Y', strtotime($thread->created_at))}} at {{date('g : ia', strtotime($thread->created_at))}}
-            </div>
-        <input type="hidden" name="$id_threads" value="{{$thread->id_threads}}">
+        </div>
+        <input type="hidden" name="id_threads" value="{{$thread->id_threads}}">
         {{$thread->threads}}
-            <div class="card-delete mt-5">
+        <div class="card-delete mt-5">
                 @if (Auth::user()->id==$thread->id_users)
                 <a href="">Delete</a>
                 @else
@@ -50,33 +48,34 @@
             <hr>  
             @foreach ($comment as $c)
             @if ($thread->id_threads==$c->id_threads)
-                {{$thread->id_threads}}
-            <div class="media comment mt-3">
-                <a class="mr-3" href="#">
-                    @if (($thread->user->gender=="laki"))
-                    {{$thread->user->gender}}
+                {{$c->id_threads}}
+                {{$c->users->id}}
+                <div class="media comment mt-3">
+                    <a class="mr-3" href="#">
+                        @if (($c->users->gender=="laki"))
+                    {{$c->users->gender}}
                     <img src="{{ asset('img/1.png')}}" class="pict mr-3" alt="">
                     @else
-                    {{$thread->user->gender}}
+                    {{$c->users->gender}}
                     <img src="{{ asset('img/2.png')}}" class="pict mr-3" alt="">
                     @endif
                 </a>
                 
                 <div class="media-body">
                     {{$c->id_threads}}
-                    {{$thread->user->id}}
-                    <h6 class="mt-0">{{$thread->user->name}}</h6>
+                    {{$c->users->id}}
+                    <h6 class="mt-0">{{$c->users->name}}</h6>
                     {{$c->comments}}
                     <div class="card-delete mt-3">
                         <a href="#" onclick="myFunction()">Balas</a>
-
-                        <div id="child" style="display:none" class="mt-3">
+                        
+                        {{-- <div id="child" style="display:none" class="mt-3">
                             <input type="hidden" name="id_threads" value="{{$c->comments}}">
-                            <input type="hidden" name="id_users" value="{{$thread->user->id}}">
+                            <input type="hidden" name="id_users" value="{{Auth::user()->id}}">
                             <input type="hidden" name="status" value="child">
                             <textarea class="form-control" name="comments" placeholder="Komentari..."></textarea>
                             <button type="button" class="btn btn-primary mt-1">Kirim</button>
-                        </div>
+                        </div> --}}
                     </div>
                     <script>
                         function myFunction() {
@@ -88,16 +87,16 @@
                                 x.style.display = "none";
                             }
                         }
-                      </script>
+                        </script>
                     <hr>
                     {{-- <hr>
-                    <div class="media mt-3">
-                        <a class="mr-3" href="#">
-                            <img src="..." class="mr-3" alt="Dummy">
-                        </a>
-                        <div class="media-body">
-                            <h6 class="mt-0">Dummy</h6>
-                            Dummy
+                        <div class="media mt-3">
+                            <a class="mr-3" href="#">
+                                <img src="..." class="mr-3" alt="Dummy">
+                            </a>
+                            <div class="media-body">
+                                <h6 class="mt-0">Dummy</h6>
+                                Dummy
                             <div class="card-delete mt-5">
                                 <a href="">Balas</a>
                             </div>
@@ -123,7 +122,7 @@
             @endforeach
             <div class="media mt-3">
                 <a class="mr-3" href="#">
-                <img src="..." class="mr-3" alt="Dummy">
+                    <img src="..." class="mr-3" alt="Dummy">
                 </a>
                 <div class="media-body">
                     <h5 class="mt-0">Dummy</h5>
@@ -134,7 +133,7 @@
                     <hr>
                     <div class="media mt-3">
                         <a class="mr-3" href="#">
-                        <img src="..." class="mr-3" alt="Dummy">
+                            <img src="..." class="mr-3" alt="Dummy">
                         </a>
                         <div class="media-body">
                             <h5 class="mt-0">Dummy</h5>
@@ -146,17 +145,21 @@
                     </div>
                 </div>
             </div>
+        </div>
     </div>
-</div>
-
+    
+<form action="/comment" method="post">
+    @csrf
     <div class="input-group mb-5">
+        
+        <input type="hidden" name="id_users" value="{{Auth::user()->id}}">
         <input type="hidden" name="id_threads" value="{{$thread->id_threads}}">
         <input type="hidden" name="status" value="comment">
         <textarea class="form-control" name="comments" placeholder="Komentari..."></textarea>
         <button type="submit" class="btn btn-primary ml-2">Kirim</button>
     </div>
 </form>
-  <hr>
+<hr>
 @endforeach
 @endsection
 

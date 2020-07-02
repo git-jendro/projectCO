@@ -9,7 +9,7 @@ class Comment extends Model
     protected $primaryKey = 'id_comments';
 
     public function thread(){
-        return $this->belongsTo('App\Thread','id_threads');
+        return $this->belongsTo('App\Thread');
     }
 
     public function users(){
@@ -17,6 +17,6 @@ class Comment extends Model
     }
 
     protected $fillable = [
-        'id_threads', 'id_users', 'comments','status'
+        'id_threads', 'id_users', 'comments','status',
     ];
 }

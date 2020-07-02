@@ -37,15 +37,17 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+        // dd(Auth::user()->id);
         
         // Comment::create($request->all());
-        Comment::create([
-            'id_users' => Auth::user()->id,
+        $c=Comment::create([
+            'id_users' => $request->id_users,
             'id_threads' => $request->id_threads,
             'comments' => $request->comments,
             'status' => $request->status
         ]);
+
+        // dd($c);
         return redirect()->action('HomeController@index');
     }
 
