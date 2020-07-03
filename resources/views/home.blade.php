@@ -68,7 +68,7 @@
                     {{$c->comments}}
                     <div class="card-delete mt-3">
                         <button class="comm">Balas</button>
-                        <div class="comments">
+                        <div class="comments mt-3">
                         <form action="">
                             {{-- <a id="balas">Balas</a> --}}
                                 <input type="hidden" name="id_threads" value="{{$c->id_threads}}">

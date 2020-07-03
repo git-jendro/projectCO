@@ -2911,6 +2911,19 @@ fieldset:disabled a.btn {
     margin-top: .5rem
 }
 
+.comm {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 input[type=button].btn-block,
 input[type=reset].btn-block,
 input[type=submit].btn-block {
@@ -8704,8 +8717,8 @@ a.text-dark:hover {
 
 @media print {
     *,
-    :after,
-    :before {
+     :after,
+     :before {
         text-shadow: none!important;
         box-shadow: none!important
     }

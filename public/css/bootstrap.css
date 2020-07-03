@@ -2688,6 +2688,13 @@ textarea.form-control.is-invalid {
     }
 }
 
+.comm {
+    background-color: transparent;
+    border: none;
+    color: blue;
+    cursor: pointer;
+}
+
 .btn:hover {
     color: #212529;
     text-decoration: none;
