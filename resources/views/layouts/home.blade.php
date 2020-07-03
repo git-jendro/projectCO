@@ -11,6 +11,30 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.min.js')}}"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> --}}
+    {{-- <script>
+        $(document).ready(function(){
+            $(".input").click(function(){
+                $(".input-group").slideToggle();
+            });
+        });
+    </script> --}}
+    
+    <script>
+        $(document).ready(function() {
+        var $par = $('div.comments');
+        $par.hide();
+
+        //use comm as a class value since you want to group multiple elements
+        $('.comm').click(function(e) {
+            var $comm = $(this).siblings('.comments').slideToggle('slow');
+            //if you want to hide previously opened comment when a new one is clicked
+            $par.not($comm).slideUp('slow');
+            e.preventDefault();
+        });
+        });
+    </script>
 
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
@@ -117,5 +141,16 @@
         <!-- Copyright -->
       
       </footer>
+      <script>
+        function myFunction() {
+            var x = document.getElementById("child");
+
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+        </script>
 </body>
 </html>

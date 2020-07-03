@@ -38,7 +38,7 @@
         </div>
         <input type="hidden" name="id_threads" value="{{$thread->id_threads}}">
         {{$thread->threads}}
-        <div class="card-delete mt-5">
+        <div class="card-delete mt-3">
                 @if (Auth::user()->id==$thread->id_users)
                 <a href="">Delete</a>
                 @else
@@ -67,27 +67,18 @@
                     <h6 class="mt-0">{{$c->users->name}}</h6>
                     {{$c->comments}}
                     <div class="card-delete mt-3">
-                        <a href="#" onclick="myFunction()">Balas</a>
-                        
-                        {{-- <div id="child" style="display:none" class="mt-3">
-                            <input type="hidden" name="id_threads" value="{{$c->comments}}">
-                            <input type="hidden" name="id_users" value="{{Auth::user()->id}}">
-                            <input type="hidden" name="status" value="child">
-                            <textarea class="form-control" name="comments" placeholder="Komentari..."></textarea>
-                            <button type="button" class="btn btn-primary mt-1">Kirim</button>
-                        </div> --}}
+                        <button class="comm">Balas</button>
+                        <div class="comments">
+                        <form action="">
+                            {{-- <a id="balas">Balas</a> --}}
+                                <input type="hidden" name="id_threads" value="{{$c->id_threads}}">
+                                <input type="hidden" name="id_users" value="{{Auth::user()->id}}">
+                                <input type="hidden" name="status" value="child">
+                                <textarea class="form-control" name="comments" placeholder="Komentari..."></textarea>
+                                <button type="submit" class="btn btn-primary mt-1">Kirim</button>
+                            </div>
+                        </form>
                     </div>
-                    <script>
-                        function myFunction() {
-                            var x = document.getElementById("child");
-                
-                            if (x.style.display === "none") {
-                                x.style.display = "block";
-                            } else {
-                                x.style.display = "none";
-                            }
-                        }
-                        </script>
                     <hr>
                     {{-- <hr>
                         <div class="media mt-3">
