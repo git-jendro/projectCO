@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Thread;
 use App\User;
 use Illuminate\Http\Request;
@@ -66,7 +67,20 @@ class ThreadsController extends Controller
      */
     public function show(Thread $thread)
     {
-        //
+        dd($thread);
+        $user = Auth::user();
+        
+        //Threads
+        $threads = Thread::orderBy('created_at','desc')
+        ->get();
+        $hitung = $threads->where('id_users', '=',$user->id);
+        
+        //Comments
+        $t = Thread::select('id_threads');
+        $comment = Comment::orderBy('id_threads','asc')
+        ->get();
+        
+        return view('/show',compact('thread','threads','hitung','comment','c'));
     }
 
     /**
@@ -100,6 +114,7 @@ class ThreadsController extends Controller
      */
     public function destroy(Thread $thread)
     {
-        
+        Thread::destroy($thread->id_threads);
+        return redirect()->action('HomeController@index');
     }
 }

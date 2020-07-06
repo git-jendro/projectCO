@@ -21,6 +21,8 @@ Auth::routes();
 //Thread
 Route::get('/home','HomeController@index');
 Route::post('/home','ThreadsController@store');
+Route::delete('/{thread}', 'ThreadsController@destroy');
+Route::get('/profile/{id}', 'HomeController@show');
 
 //Comment
 Route::post('/comment','CommentsController@store');

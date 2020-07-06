@@ -35,16 +35,36 @@ class HomeController extends Controller
         $hitung = $threads->where('id_users', '=',$user->id);
         
         //Comments
-        $t = Thread::select('id_threads');
         $comment = Comment::orderBy('id_threads','asc')
         ->get();
         // dd($c);
         
-        
+        return view('/home',compact('threads','hitung','comment','user'));
+    }
+    public function show($id)
+    {
+        //Show
+        $thread = Thread::select('threads','id_users','id_threads')->where('id_users', '=', $id)->get();
+        $show = $thread ->sortKeysDesc();
+        $u = User::select('id','name','gender','email')->where('id','=',$id)
+        ->get();
+        $u->first()->id;
+        $count = $show->where('id_users','=',$id);
         
 
        
 
-        return view('/home',compact('threads','hitung','comment','c'));
+        
+        //Threads
+        $threads = Thread::orderBy('created_at','desc')
+        ->get();
+        $user = Auth::user();
+        $hitung = $threads->where('id_users', '=',$user->id);
+        
+        //Comments
+        $comment = Comment::orderBy('id_threads','asc')
+        ->get();
+
+        return view('/show',compact('id','show','hitung','comment','u','count'));
     }
 }
